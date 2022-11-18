@@ -24,19 +24,15 @@ public void draw()
   
   if(wKey){
     rocket.accelerate(0.5);
-    System.out.println("w");
   }
   if(sKey){
     rocket.accelerate(-0.5);
-    System.out.println("s");
   }
   if(aKey){
     rocket.turn(-1);
-    System.out.println("a");
   }
   if(dKey){
     rocket.turn(1);
-    System.out.println("d");
   } 
   fill(255);
   rocket.move();
