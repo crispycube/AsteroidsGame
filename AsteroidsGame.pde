@@ -19,8 +19,8 @@ public void draw()
   }
   fill(255);
   rocket.move();
+  rocket.spin();  
   rocket.show();
-  rocket.spin();
 }  
 public void keyPressed() {
   if (key == 'w') {
