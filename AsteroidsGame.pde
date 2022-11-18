@@ -1,6 +1,10 @@
 //your variable declarations here
 Spaceship rocket;
 Star stars[];
+boolean wKey = false;
+boolean sKey = false;
+boolean aKey = false;
+boolean dKey = false;
 public void setup() 
 {
   background(0);
@@ -17,21 +21,40 @@ public void draw()
   for(int i = 0; i < stars.length; i++){
     stars[i].show();
   }
+  
+  if(wKey){
+    rocket.accelerate(0.5);
+    System.out.println("w");
+  }
+  if(sKey){
+    rocket.accelerate(-0.5);
+    System.out.println("s");
+  }
+  if(aKey){
+    rocket.turn(-1);
+    System.out.println("a");
+  }
+  if(dKey){
+    rocket.turn(1);
+    System.out.println("d");
+  } 
   fill(255);
   rocket.move();
-  rocket.spin();  
+  rocket.spin();
   rocket.show();
 }  
 public void keyPressed() {
   if (key == 'w') {
-    rocket.accelerate(0.5);
-  } else if (key == 's') {
-    rocket.accelerate(-0.5);
+    wKey = true;
+  } 
+  if (key == 's') {
+    sKey = true;
   }
   if(key == 'a'){
-    rocket.turn(-1);
-  } else if(key == 'd'){
-    rocket.turn(1);
+    aKey = true;
+  }
+  if(key == 'd'){
+    dKey = true;
   }
   if(key == ' '){
     rocket.setXspeed(0);
@@ -39,5 +62,19 @@ public void keyPressed() {
     rocket.setAngularVelocity(0);
     rocket.teleport(Math.random()*500, Math.random()*500);
     rocket.setPointDirection(Math.random()*360);
+  }
+}
+public void keyReleased(){
+  if(key == 'w'){
+    wKey = false;
+  }
+  if(key == 's'){
+    sKey = false;
+  }
+  if(key == 'a'){
+    aKey = false;
+  }
+  if(key == 'd'){
+    dKey = false;
   }
 }
