@@ -1,5 +1,5 @@
 class Spaceship extends Floater  {
-  double angularVelocity;
+  private double angularVelocity;
   public Spaceship(){
     corners = 4;
     xCorners = new int[]{-8, 16, -8, -2};
