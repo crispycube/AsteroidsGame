@@ -1,6 +1,7 @@
 //your variable declarations here
 Spaceship rocket;
 Star stars[];
+ArrayList<Asteroid> asteroids;
 boolean wKey = false;
 boolean sKey = false;
 boolean aKey = false;
@@ -14,6 +15,10 @@ public void setup()
   for(int i = 0; i < stars.length; i++){
     stars[i] = new Star();
   }
+  asteroids = new ArrayList<Asteroid>();
+  for(int i = 0; i < 20; i++){
+    asteroids.add(new Asteroid());
+  }
 }
 public void draw() 
 {
@@ -21,7 +26,6 @@ public void draw()
   for(int i = 0; i < stars.length; i++){
     stars[i].show();
   }
-  
   if(wKey){
     rocket.accelerate(0.5);
   }
@@ -29,15 +33,23 @@ public void draw()
     rocket.accelerate(-0.5);
   }
   if(aKey){
-    rocket.turn(-1);
+    rocket.turn(-0.5);
   }
   if(dKey){
-    rocket.turn(1);
+    rocket.turn(0.5);
   } 
   fill(255);
   rocket.move();
   rocket.spin();
   rocket.show();
+  for(int i = 0; i < asteroids.size(); i++){
+    Asteroid temp = asteroids.get(i);
+    temp.move();
+    temp.show();
+    if(dist((float)rocket.getX(), (float)rocket.getY(), (float)temp.getX(), (float)temp.getY()) < 20){
+      asteroids.remove(i);
+    }
+  }
 }  
 public void keyPressed() {
   if (key == 'w') {
