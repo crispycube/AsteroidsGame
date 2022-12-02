@@ -48,6 +48,7 @@ public void draw()
     temp.show();
     if(dist((float)rocket.getX(), (float)rocket.getY(), (float)temp.getX(), (float)temp.getY()) < 20){
       asteroids.remove(i);
+      i--;
     }
   }
 }  
