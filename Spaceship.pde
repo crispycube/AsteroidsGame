@@ -1,6 +1,8 @@
 class Spaceship extends Floater  {
   private double angularVelocity;
+  private int hp;
   public Spaceship(){
+    hp = 20;
     corners = 4;
     xCorners = new int[]{-8, 16, -8, -2};
     yCorners = new int[]{-8, 0, 8, 0};
@@ -9,6 +11,15 @@ class Spaceship extends Floater  {
     myXspeed = myYspeed = 0.0;
     myPointDirection = 0.0;
     angularVelocity = 0.0;
+  }
+  public int getHP(){
+    return hp;
+  }
+  public void setHP(int n){
+    hp = n;
+  }
+  public void hit(){
+    hp--;
   }
   public double getX(){
     return myCenterX;
@@ -27,6 +38,12 @@ class Spaceship extends Floater  {
   }
   public double getAngularVelocity(){
     return angularVelocity;
+  }
+  public void setX(int x){
+    myCenterX = x;
+  }
+  public void setY(int y){
+    myCenterY = y;
   }
   public void setXspeed(double s){
     myXspeed = s;
